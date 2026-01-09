@@ -1,0 +1,26 @@
+const { test, expect } = require("@playwright/test");
+const { Loginpage } = require("../POM/Loginpage");
+const {Dashboard}=require("../POM/Dashboard")
+
+test('apply_permission', async ({ page }) => {
+
+    const Login = new Loginpage(page);
+    await Login.gotoezhour();
+    await Login.login("rengaraj.k@rubixtek.com","Raj@0077");
+
+    const apply_permission = new Dashboard(page);
+
+    await apply_permission.click_attendance();
+    await apply_permission.click_myrequest();
+    await apply_permission.click_permission();
+    await apply_permission.click_apply_button();
+    await apply_permission.choose_permission_type();
+
+    await apply_permission.Choose_date("5");
+
+    // await page.pause();
+
+
+    
+
+})

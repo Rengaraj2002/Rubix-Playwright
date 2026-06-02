@@ -13,11 +13,12 @@ import { chromium, defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './tests/specs',
   timeout: 60*1000,
   expect:{
     timeout: 30*1000,
   },
+  outputDir: 'test-results',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

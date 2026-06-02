@@ -1,11 +1,12 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../src/pages');
-const { DashboardPage } = require('../src/pages');
+const { LoginPage } = require('../../src/pages');
+const { DashboardPage } = require('../../src/pages');
+const { ezhour } = require('../fixtures/userData');
 
 test('apply_permission', async ({ page }) => {
   const Login = new LoginPage(page);
   await Login.gotoezhour();
-  await Login.login('rengaraj.k@rubixtek.com', 'Raj@0077');
+  await Login.login(ezhour.username, ezhour.password);
 
   const apply_permission = new DashboardPage(page);
 

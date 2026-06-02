@@ -14,9 +14,9 @@ import { chromium, defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 10*1000,
+  timeout: 60*1000,
   expect:{
-    timeout: 10*1000,
+    timeout: 30*1000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,

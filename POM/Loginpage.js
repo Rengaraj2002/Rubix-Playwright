@@ -16,15 +16,17 @@ async gotoezhour()
    await this.page.goto("https://rubixtek.ezhour.com/account/login");
 }
 
+
 async login(username,password)
 {
 
    
-  await  this.usermail.fill(username);
+   await  this.usermail.fill(username);
    await this.password.fill(password);
    await this.login_submit.click();
 }
 
+///jhashgosphgopashgposahgposhpogshpohogsah
 
 }
 

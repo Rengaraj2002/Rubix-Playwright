@@ -1,50 +1,46 @@
 class ApplyLeavePage {
   constructor(page) {
     this.page = page;
-    this.Leavetracker_text = this.page.locator('//span[text()="Leave tracker"]');
-    this.Leavedetails_text = this.page.locator('//span[text()="Leave Details"]');
-    this.ApplyLeave_text = this.page.locator('//button[text()=" Apply Leave "]');
-    this.Select_leave_type = this.page.locator('//select[@name="leaveTypeId"]');
-    this.fromdate = this.page.locator('//input[@id="fromDate"]');
-    this.Todate = this.page.locator('//input[@id="toDate"]');
-    this.LeaveReason = this.page.locator('//textarea[@id="Leave_Reason"]');
-    this.Applybutton = this.page.locator('//span[text()="Apply"]');
-    this.Cancelbutton = this.page.locator('(//button[text()=" Cancel "])[1]');
+    this.leaveTrackerText = this.page.locator('//span[text()="Leave tracker"]');
+    this.leaveDetailsText = this.page.locator('//span[text()="Leave Details"]');
+    this.applyLeaveButton = this.page.locator('//button[text()=" Apply Leave "]');
+    this.leaveTypeSelect = this.page.locator('//select[@name="leaveTypeId"]');
+    this.fromDateInput = this.page.locator('//input[@id="fromDate"]');
+    this.toDateInput = this.page.locator('//input[@id="toDate"]');
+    this.leaveReasonInput = this.page.locator('//textarea[@id="Leave_Reason"]');
+    this.applyButton = this.page.locator('//span[text()="Apply"]');
+    this.cancelButton = this.page.locator('(//button[text()=" Cancel "])[1]');
   }
 
-  async Click_LeaveTracker() {
-    await this.Leavetracker_text.click();
+  async clickLeaveTracker() {
+    await this.leaveTrackerText.click();
   }
 
-  async Click_leavedetails() {
-    await this.Leavedetails_text.waitFor({ state: 'visible' });
-    await this.Leavedetails_text.click();
+  async clickLeaveDetails() {
+    await this.leaveDetailsText.waitFor({ state: 'visible' });
+    await this.leaveDetailsText.click();
   }
 
-  async Click_ApplyLeave() {
-    await this.ApplyLeave_text.click();
+  async clickApplyLeave() {
+    await this.applyLeaveButton.click();
   }
 
-  async SelelectLeaveType() {
-    await this.Select_leave_type.selectOption({ label: 'Sick' });
+  async selectLeaveType(type = 'Sick') {
+    await this.leaveTypeSelect.selectOption({ label: type });
   }
 
-  async fromdate(date) {
-    await this.fromdate.click();
-    await this.page.locator(
-      `//td[not(contains(@class,'disabled'))]//span[text()="${date}"]`
-    ).click();
+  async selectFromDate(date) {
+    await this.fromDateInput.click();
+    await this.page.locator(`//td[not(contains(@class,'disabled'))]//span[text()="${date}"]`).click();
   }
 
-  async Todate(date) {
-    await this.Todate.click();
-    await this.page.locator(
-      `//td[not(contains(@class,'disabled'))]//span[text()="${date}"]`
-    ).click();
+  async selectToDate(date) {
+    await this.toDateInput.click();
+    await this.page.locator(`//td[not(contains(@class,'disabled'))]//span[text()="${date}"]`).click();
   }
 
-  async LeaveReason(reason) {
-    await this.LeaveReason.fill(reason);
+  async fillLeaveReason(reason) {
+    await this.leaveReasonInput.fill(reason);
   }
 }
 

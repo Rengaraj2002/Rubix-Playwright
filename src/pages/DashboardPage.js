@@ -5,35 +5,35 @@ class DashboardPage {
   constructor(page) {
     this.page = page;
     this.attendance = page.locator('//span[text()="Attendance"]');
-    this.My_request = page.locator('//span[text()="My request"]');
+    this.myRequest = page.locator('//span[text()="My request"]');
     this.permission = page.locator('//span[text()="Permission"]');
-    this.Apply_permission = page.locator('//button[text()=" Apply "]');
-    this.permission_type = page.locator('//select[@name="PermissionType"]');
-    this.Date = page.locator('//input[@id="PermissionRequest_PermissionOn"]');
+    this.applyPermission = page.locator('//button[text()=" Apply "]');
+    this.permissionType = page.locator('//select[@name="PermissionType"]');
+    this.permissionDate = page.locator('//input[@id="PermissionRequest_PermissionOn"]');
   }
 
-  async click_attendance() {
+  async clickAttendance() {
     await this.attendance.click();
   }
 
-  async click_myrequest() {
-    await this.My_request.click();
+  async clickMyRequest() {
+    await this.myRequest.click();
   }
 
-  async click_permission() {
+  async clickPermission() {
     await this.permission.click();
   }
 
-  async click_apply_button() {
-    await this.Apply_permission.click();
+  async clickApplyButton() {
+    await this.applyPermission.click();
   }
 
-  async choose_permission_type() {
-    await this.permission_type.selectOption('Permission');
+  async choosePermissionType() {
+    await this.permissionType.selectOption('Permission');
   }
 
-  async Choose_date(date) {
-    await this.Date.click();
+  async chooseDate(date) {
+    await this.permissionDate.click();
     await this.page.locator(
       `//td[not(contains(@class,'disabled'))]//span[text()="${date}"]`
     ).click();

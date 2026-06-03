@@ -1,19 +1,19 @@
 const { test, expect } = require('@playwright/test');
-const { ApplyLeavePage } = require('../../src/pages');
-const { LoginPage } = require('../../src/pages');
+const { ApplyLeavePage, LoginPage } = require('../../src/pages');
 const { ezhour } = require('../fixtures/userData');
 
 test('Apply leave', async ({ page }) => {
-  const Login = new LoginPage(page);
-  await Login.gotoezhour();
-  await Login.login(ezhour.username, ezhour.password);
-  const Leave = new ApplyLeavePage(page);
-  await Leave.clickLeaveTracker();
-  await Leave.clickLeaveDetails();
-  await Leave.clickApplyLeave();
-  await Leave.selectLeaveType();
-  await Leave.selectFromDate('7');
-  await Leave.selectToDate('7');
-  await Leave.fillLeaveReason('Personal work');
-  await page.pause();
+  const login = new LoginPage(page);
+  await login.gotoezhour(ezhour.url);
+  await login.login(ezhour.username, ezhour.password);
+  const leave = new ApplyLeavePage(page);
+  await leave.clickLeaveTracker();
+  await leave.clickLeaveDetails();
+  await leave.clickApplyLeave();
+  await expect(leave.applyButton).toBeVisible();
+  await leave.selectLeaveType();
+  await leave.selectFromDate('7');
+  await leave.selectToDate('7');
+  await leave.fillLeaveReason('Personal work');
+  await expect(leave.leaveReasonInput).toHaveValue('Personal work');
 });

@@ -6,8 +6,8 @@ class LoginPage {
     this.login_submit = page.locator('//button[text()="Log in"]');
   }
 
-  async gotoezhour() {
-    await this.page.goto('https://rubixtek.ezhour.com/account/login');
+  async gotoezhour(url) {
+    await this.page.goto(url);
   }
 
   async login(username, password) {

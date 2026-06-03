@@ -1,22 +1,22 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../../src/pages');
-const { DashboardPage } = require('../../src/pages');
+const { LoginPage, DashboardPage } = require('../../src/pages');
 const { ezhour } = require('../fixtures/userData');
 
 test('apply_permission', async ({ page }) => {
-  const Login = new LoginPage(page);
-  await Login.gotoezhour();
-  await Login.login(ezhour.username, ezhour.password);
+  const login = new LoginPage(page);
+  await login.gotoezhour(ezhour.url);
+  await login.login(ezhour.username, ezhour.password);
 
-  const apply_permission = new DashboardPage(page);
+  const dashboard = new DashboardPage(page);
 
-  await apply_permission.click_attendance();
-  await apply_permission.click_myrequest();
-  await apply_permission.click_permission();
-  await apply_permission.click_apply_button();
-  await apply_permission.choose_permission_type();
+  await dashboard.clickAttendance();
+  await dashboard.clickMyRequest();
+  await dashboard.clickPermission();
+  await dashboard.clickApplyButton();
+  await dashboard.choosePermissionType();
 
-  await apply_permission.Choose_date('5');
+  await expect(dashboard.permissionDate).toBeVisible();
+  await dashboard.chooseDate('5');
 
     // await page.pause();
 
